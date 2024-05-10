@@ -26,7 +26,7 @@ const mapScrapper = asyncHandler(async (req, res) => {
   const browser = await puppeteer.launch({
     headless: true, // Run browser in headless mode (no UI)
     //args: [`--proxy-server=${newProxyUrl}`], // Use the anonymized proxy
-    executablePath: '/path/to/Chrom'
+    
   });
 
   // Create a new page in the browser

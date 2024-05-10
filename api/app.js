@@ -1,10 +1,7 @@
 import express from "express"
-import dotenv from "dotenv"
 import cors from "cors"
-import { mapScrapper } from "./controller";
-dotenv.config({
-    path: './.env'
-})
+import { mapScrapper } from "../controller.js";
+
 
 const PORT = 9000;
 
@@ -16,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use(cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: ['https://google-map-s-scrapper-frontend.vercel.app/'],
     credentials: true
 }))
 
@@ -25,8 +22,8 @@ app.get("/api/v1/home/healthtest", (req, res) => {
   })
 app.post("/api/v1/home/datascrape", mapScrapper)
 
-app.listen(() => {
-    console.log(`⚙️ Server is running at port `);
+app.listen(PORT, () => {
+    console.log(`⚙️ Server is running at port ${PORT}`);
 })
 
 // http://localhost:8000/api/v1/home/
